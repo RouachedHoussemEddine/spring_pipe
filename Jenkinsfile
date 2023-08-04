@@ -9,7 +9,7 @@ pipeline {
         stage('Pull GitHub') {
             steps {
                 checkout scmGit(branches: [[name: "*/main"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/RouachedHoussemEddine/spring_pipe']])
-				sh 'mvn clean install'
+				bat 'mvn clean install'
 			
 			}
         }
