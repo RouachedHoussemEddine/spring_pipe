@@ -46,21 +46,16 @@ pipeline {
 						}		
 					}
 		}
-		
-		
-		
-
-//
-//		stage('Test'){
-//			steps{
-//				bat "mvn test"
-//			}
-//		}
-//
-//		stage('Deploy') {
-//			steps {
-//			    bat "mvn jar:jar deploy:deploy"
-//			}
-//		}
 	}
+    post {
+        success {
+            echo 'Build succeeded!'
+        }
+        
+        failure {
+            echo 'Build failed!'
+        }
+    }
+
+
 }
