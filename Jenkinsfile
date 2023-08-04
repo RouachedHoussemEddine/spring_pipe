@@ -18,17 +18,41 @@ pipeline {
 			
 			}
         }
+	
+	    
+		stage('Build Docker image') {
+            steps {
+                script {
+                    def param1Value = params.docker_image
+                    def param2Value = params.docker_image_version
+                    //sh "echo Value of docker_image: ${param1Value}"
+                    //sh "echo Value of docker_image_version: ${param2Value}"
+                    sh "docker build  -t spring_pipe ."
+                }
+            }
+
+        }
+		
+		
+		stage('Push Docker image'){
+						script {
+                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
+                                    def dockerHubUsername = "azzinoth5"
+                                    def repo = "spring_pipe"
+                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
+                                    def dockerHubTag = "v1.0" //desired tag/version
+                                    sh "docker tag spring_pipe ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker logout"   
+                            }
+						}		
+		
+		}
 		
 		
 		
-		
-		
-		
-//		stage('Build'){
-//			steps {
-//				bat "mvn clean install -DskipTests"
-//			}
-//		}
+
 //
 //		stage('Test'){
 //			steps{
