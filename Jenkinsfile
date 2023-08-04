@@ -31,6 +31,7 @@ pipeline {
 		
 
 		stage('Push Docker image'){
+					steps {
 						script {
                             withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                                 sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
@@ -43,7 +44,7 @@ pipeline {
                                     sh "docker logout"   
                             }
 						}		
-		
+					}
 		}
 		
 		
