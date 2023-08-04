@@ -1,9 +1,10 @@
 pipeline {
 	agent any
 	
-	tools {
-  maven 'maven_tool1'
-		}
+		tools {
+		maven 'maven_tool1'
+		jdk 'JDK_11'
+			}
 
 	environment {
 		DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS_ID_TEST')
