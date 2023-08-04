@@ -23,10 +23,6 @@ pipeline {
 		stage('Build Docker image') {
             steps {
                 script {
-                    def param1Value = params.docker_image
-                    def param2Value = params.docker_image_version
-                    //sh "echo Value of docker_image: ${param1Value}"
-                    //sh "echo Value of docker_image_version: ${param2Value}"
                     sh "docker build  -t spring_pipe ."
                 }
             }
