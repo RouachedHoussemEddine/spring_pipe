@@ -28,14 +28,14 @@ pipeline {
                     sh "docker build  -t Customer_Support_Notifications ."
                 }
             }
-
+                }
 		stage('Build Docker image Entry_Exit_Control') {
             steps {
                 sh 'cd Entry_Exit_Control'
                 script {
                     sh "docker build  -t Entry_Exit_Control ."
                 }
-            }
+            }}
  
 		stage('Build Docker image Parking_Space_Allocation') {
             steps {
@@ -44,7 +44,7 @@ pipeline {
                     sh "docker build  -t Parking_Space_Allocation ."
                 }
             }
-
+            }
 		stage('Build Docker image Payment_Processing') {
             steps {
                 sh 'cd Payment_Processing'
@@ -52,7 +52,7 @@ pipeline {
                     sh "docker build  -t Payment_Processing ."
                 }
             }
-
+            }
 		stage('Build Docker image User_Management') {
             steps {
                 sh 'cd User_Management'
@@ -79,7 +79,7 @@ pipeline {
 						}		
 					}
 		}
-	}
+	
 
 		stage('Push Docker image Payment_Processing'){
 					steps {
@@ -97,7 +97,7 @@ pipeline {
 						}		
 					}
 		}
-	}
+	
 
 		stage('Push Docker image Parking_Space_Allocation'){
 					steps {
@@ -115,7 +115,7 @@ pipeline {
 						}		
 					}
 		}
-	}
+	
 
 		stage('Push Docker image Entry_Exit_Control'){
 					steps {
@@ -133,7 +133,7 @@ pipeline {
 						}		
 					}
 		}
-	}
+	
 
 		stage('Push Docker image Customer_Support_Notifications'){
 					steps {
