@@ -15,7 +15,20 @@ pipeline {
         stage('Pull GitHub') {
             steps {
                 checkout scmGit(branches: [[name: "*/main"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/RouachedHoussemEddine/spring_pipe']])
-				sh 'mvn clean install' 
+				sh 'cd Customer_Support_Notifications'
+                sh 'mvn clean install' 
+                sh 'cd ..'
+				sh 'cd Entry_Exit_Control'
+                sh 'mvn clean install'
+                sh 'cd ..'
+				sh 'cd Parking_Space_Allocation'
+                sh 'mvn clean install'
+                sh 'cd ..'
+				sh 'cd Payment_Processing'
+                sh 'mvn clean install'
+                sh 'cd ..'
+				sh 'cd User_Management'
+                sh 'mvn clean install'
 			
 			}
         }
