@@ -36,7 +36,7 @@ pipeline {
                     sh "docker build  -t Entry_Exit_Control ."
                 }
             }
-
+ 
 		stage('Build Docker image Parking_Space_Allocation') {
             steps {
                 sh 'cd Parking_Space_Allocation'
