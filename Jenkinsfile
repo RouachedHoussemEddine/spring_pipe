@@ -15,21 +15,21 @@ pipeline {
         stage('Pull GitHub') {
             steps {
                 checkout scmGit(branches: [[name: "*/main"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/RouachedHoussemEddine/spring_pipe']])
-				sh 'cd Customer_Support_Notifications'
+				dir('/var/lib/jenkins/workspace/spring_pipe/Customer_Support_Notifications') {
                 sh 'mvn clean install' 
-                sh 'cd ..'
-				sh 'cd Entry_Exit_Control'
+            }
+				dir('/var/lib/jenkins/workspace/spring_pipe/Entry_Exit_Control') {
                 sh 'mvn clean install'
-                sh 'cd ..'
-				sh 'cd Parking_Space_Allocation'
+            }    
+				dir('/var/lib/jenkins/workspace/spring_pipe/Parking_Space_Allocation') {
                 sh 'mvn clean install'
-                sh 'cd ..'
-				sh 'cd Payment_Processing'
+            }    
+				dir('/var/lib/jenkins/workspace/spring_pipe/Payment_Processing') {
                 sh 'mvn clean install'
-                sh 'cd ..'
-				sh 'cd User_Management'
+            }    
+				dir('/var/lib/jenkins/workspace/spring_pipe/User_Management') {
                 sh 'mvn clean install'
-			
+			}
 			}
         }
 
