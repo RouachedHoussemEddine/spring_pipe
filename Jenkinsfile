@@ -68,6 +68,7 @@ pipeline {
                 }
             }
             }
+        }
 		stage('Build Docker image User_Management') {
             steps {
                 dir('/var/lib/jenkins/workspace/spring_pipe/User_Management'){
