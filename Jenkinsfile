@@ -36,31 +36,33 @@ pipeline {
 
 		stage('Build Docker image Customer_Support_Notifications') {
             steps {
-                sh 'cd Customer_Support_Notifications'
+                dir('/var/lib/jenkins/workspace/spring_pipe/Customer_Support_Notifications'){
                 script {
                     sh "docker build  -t customersupportnotifications ."
                 }
             }
                 }
+                }
 		stage('Build Docker image Entry_Exit_Control') {
             steps {
-                sh 'cd Entry_Exit_Control'
+                dir('/var/lib/jenkins/workspace/spring_pipe/Entry_Exit_Control'){
                 script {
                     sh "docker build  -t entryexitcontrol ."
                 }
             }}
- 
+                }
 		stage('Build Docker image Parking_Space_Allocation') {
             steps {
-                sh 'cd Parking_Space_Allocation'
+                sdir('/var/lib/jenkins/workspace/spring_pipe/Parking_Space_Allocation'){
                 script {
                     sh "docker build  -t parkingspaceallocation ."
                 }
             }
             }
+            }
 		stage('Build Docker image Payment_Processing') {
             steps {
-                sh 'cd Payment_Processing'
+                dir('/var/lib/jenkins/workspace/spring_pipe/Payment_Processing'){
                 script {
                     sh "docker build  -t paymentprocessing ."
                 }
@@ -68,9 +70,10 @@ pipeline {
             }
 		stage('Build Docker image User_Management') {
             steps {
-                sh 'cd User_Management'
+                dir('/var/lib/jenkins/workspace/spring_pipe/User_Management'){
                 script {
                     sh "docker build  -t usermanagement ."
+                }
                 }
             }
         }
