@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.azzinoth5</groupId>
-	<artifactId>spring_pipe</artifactId>
+	<artifactId>Customer_Support_Notifications</artifactId>
 	<version>0.0.1</version>
-	<name>spring_pipe</name>
+	<name>Customer_Support_Notifications</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
