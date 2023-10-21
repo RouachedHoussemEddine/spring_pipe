@@ -70,7 +70,7 @@ pipeline {
             steps {
                 sh 'cd User_Management'
                 script {
-                    sh "docker build  -t User_Management ."
+                    sh "docker build  -t usermanagement ."
                 }
             }
         }
