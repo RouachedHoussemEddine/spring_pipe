@@ -38,7 +38,7 @@ pipeline {
             steps {
                 sh 'cd Customer_Support_Notifications'
                 script {
-                    sh "docker build  -t Customer_Support_Notifications ."
+                    sh "docker build  -t customersupportnotifications ."
                 }
             }
                 }
@@ -46,7 +46,7 @@ pipeline {
             steps {
                 sh 'cd Entry_Exit_Control'
                 script {
-                    sh "docker build  -t Entry_Exit_Control ."
+                    sh "docker build  -t entryexitcontrol ."
                 }
             }}
  
@@ -54,7 +54,7 @@ pipeline {
             steps {
                 sh 'cd Parking_Space_Allocation'
                 script {
-                    sh "docker build  -t Parking_Space_Allocation ."
+                    sh "docker build  -t parkingspaceallocation ."
                 }
             }
             }
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 sh 'cd Payment_Processing'
                 script {
-                    sh "docker build  -t Payment_Processing ."
+                    sh "docker build  -t paymentprocessing ."
                 }
             }
             }
