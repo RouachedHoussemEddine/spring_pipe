@@ -93,7 +93,7 @@ pipeline {
 
 		stage('Build Docker image Parking_Space_Allocation') {
             steps {
-                sdir('/var/lib/jenkins/workspace/spring_pipe/Parking_Space_Allocation'){
+                dir('/var/lib/jenkins/workspace/spring_pipe/Parking_Space_Allocation'){
                 script {
                     sh "docker build  -t parkingspaceallocation ."
                 }
@@ -173,20 +173,6 @@ pipeline {
 		}
 	
     }
-
-	
-
-
-	
-
-
-	
-
-
-
-
-
-
     post {
         success {
             echo 'Build succeeded!'
