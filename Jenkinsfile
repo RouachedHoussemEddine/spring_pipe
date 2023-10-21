@@ -43,6 +43,27 @@ pipeline {
             }
                 }
                 }
+		stage('Push Docker image Customer_Support_Notifications'){
+					steps {
+						script {
+                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
+                                    def dockerHubUsername = "azzinoth5"
+                                    def repo = "customersupportnotifications"
+                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
+                                    def dockerHubTag = "v1.0" //desired tag/version
+                                    sh "docker tag customersupportnotifications ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker logout"   
+                            }
+						}		
+					}
+		}
+	}
+
+
+
+
 		stage('Build Docker image Entry_Exit_Control') {
             steps {
                 dir('/var/lib/jenkins/workspace/spring_pipe/Entry_Exit_Control'){
@@ -51,6 +72,25 @@ pipeline {
                 }
             }}
                 }
+
+		stage('Push Docker image Entry_Exit_Control'){
+					steps {
+						script {
+                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
+                                    def dockerHubUsername = "azzinoth5"
+                                    def repo = "entryexitcontrol"
+                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
+                                    def dockerHubTag = "v1.0" //desired tag/version
+                                    sh "docker tag entryexitcontrol ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker logout"   
+                            }
+						}		
+					}
+		}
+
+
 		stage('Build Docker image Parking_Space_Allocation') {
             steps {
                 sdir('/var/lib/jenkins/workspace/spring_pipe/Parking_Space_Allocation'){
@@ -60,6 +100,25 @@ pipeline {
             }
             }
             }
+		stage('Push Docker image Parking_Space_Allocation'){
+					steps {
+						script {
+                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
+                                    def dockerHubUsername = "azzinoth5"
+                                    def repo = "parkingspaceallocation"
+                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
+                                    def dockerHubTag = "v1.0" //desired tag/version
+                                    sh "docker tag parkingspaceallocation ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker logout"   
+                            }
+						}		
+					}
+		}
+
+
+
 		stage('Build Docker image Payment_Processing') {
             steps {
                 dir('/var/lib/jenkins/workspace/spring_pipe/Payment_Processing'){
@@ -69,6 +128,24 @@ pipeline {
             }
             }
         }
+		stage('Push Docker image Payment_Processing'){
+					steps {
+						script {
+                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
+                                    def dockerHubUsername = "azzinoth5"
+                                    def repo = "paymentprocessing"
+                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
+                                    def dockerHubTag = "v1.0" //desired tag/version
+                                    sh "docker tag paymentprocessing ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
+                                    sh "docker logout"   
+                            }
+						}		
+					}
+		}
+
+
 		stage('Build Docker image User_Management') {
             steps {
                 dir('/var/lib/jenkins/workspace/spring_pipe/User_Management'){
@@ -78,8 +155,6 @@ pipeline {
                 }
             }
         }
-
-
 		stage('Push Docker image User_Management'){
 					steps {
 						script {
@@ -98,77 +173,16 @@ pipeline {
 		}
 	
 
-		stage('Push Docker image Payment_Processing'){
-					steps {
-						script {
-                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
-                                    def dockerHubUsername = "azzinoth5"
-                                    def repo = "paymentprocessing"
-                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
-                                    def dockerHubTag = "v1.0" //desired tag/version
-                                    sh "docker tag paymentprocessing ${dockerHubRepo}:${dockerHubTag}"
-                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
-                                    sh "docker logout"   
-                            }
-						}		
-					}
-		}
+
 	
 
-		stage('Push Docker image Parking_Space_Allocation'){
-					steps {
-						script {
-                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
-                                    def dockerHubUsername = "azzinoth5"
-                                    def repo = "parkingspaceallocation"
-                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
-                                    def dockerHubTag = "v1.0" //desired tag/version
-                                    sh "docker tag parkingspaceallocation ${dockerHubRepo}:${dockerHubTag}"
-                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
-                                    sh "docker logout"   
-                            }
-						}		
-					}
-		}
+
 	
 
-		stage('Push Docker image Entry_Exit_Control'){
-					steps {
-						script {
-                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
-                                    def dockerHubUsername = "azzinoth5"
-                                    def repo = "entryexitcontrol"
-                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
-                                    def dockerHubTag = "v1.0" //desired tag/version
-                                    sh "docker tag entryexitcontrol ${dockerHubRepo}:${dockerHubTag}"
-                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
-                                    sh "docker logout"   
-                            }
-						}		
-					}
-		}
+
 	
 
-		stage('Push Docker image Customer_Support_Notifications'){
-					steps {
-						script {
-                            withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS_ID_TEST', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                                sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin"
-                                    def dockerHubUsername = "azzinoth5"
-                                    def repo = "customersupportnotifications"
-                                    def dockerHubRepo = "${dockerHubUsername}/${repo}" 
-                                    def dockerHubTag = "v1.0" //desired tag/version
-                                    sh "docker tag customersupportnotifications ${dockerHubRepo}:${dockerHubTag}"
-                                    sh "docker push ${dockerHubRepo}:${dockerHubTag}"
-                                    sh "docker logout"   
-                            }
-						}		
-					}
-		}
-	}
+
 
 
 
