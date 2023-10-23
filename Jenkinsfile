@@ -11,7 +11,7 @@ environment {
 }
 
 stages {     
-    stage('Pull GitHub') {
+    stage('Pull GitHub') { 
         steps {
             checkout scmGit(branches: [[name: "*/main"]], extensions: [], userRemoteConfigs: [[url: 'https://github.com/RouachedHoussemEddine/spring_pipe']])
 			dir('/var/lib/jenkins/workspace/spring_pipe/Customer_Support_Notifications') {
